@@ -5,18 +5,25 @@
 /// </summary>
 public class Student
 {
-	private string imie;
-	private string email;
-	private string nazwisko;
+    private string firstName;
+    private string email;
+    private string name;
+    private string index;
+    private DateTime dateOfBirth;
+    private string mothersFName;
+    private string fathersFName;
 
-	public Student(string imie,string email, string nazwisko )
-	{
-		this.imie = imie;
-		this.nazwisko = nazwisko;
-		this.email = email;
+    public Student(string firstName, string name, string index, DateTime dateOfBirth, string email, string mothersFName, string fathersFName)
+    {
+        this.firstName = firstName;
+        this.name = name;
+        this.index = index;
+        this.dateOfBirth = dateOfBirth;
+        this.email = email;
+        this.mothersFName = mothersFName;
+        this.fathersFName = fathersFName;
 
 
 
-
-	}
+    }
 }
