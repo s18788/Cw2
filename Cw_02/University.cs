@@ -1,13 +1,45 @@
-﻿using System;
+﻿
+using System;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
+[Serializable]
 public class University
 {
-    private DateTime setUpDate;
-    private string founder;
+    [JsonPropertyName("createdAt")]
+    [XmlAttribute("createdAt")]
+    public string created { get; set; }
 
-    public University(DateTime setUpDate, string founder)
+
+    [JsonPropertyName("author")]
+    [XmlAttribute("author")]
+    public string author { get; set; }
+
+
+    [XmlArray("studenci")]
+    [XmlArrayItem("student")]
+    public HashSet<Student> students { get; } = new HashSet<Student>();
+
+    [JsonPropertyName("activeStudies")]
+    [XmlArray("activeStudies")]
+    [XmlArrayItem("studies")]
+    public List<ActiveStudies> activeStudies { get; set; } = new List<ActiveStudies>();
+
+
+    private University()
     {
-        this.setUpDate = setUpDate;
-        this.founder = founder;
+
+    }
+
+    public University(DateTime created, string author)
+    {
+        this.created = created.ToString("dd.MM.yyyy");
+        this.author = author;
+    }
+
+    public void addStudent(Student student)
+    {
+        students.Add(student);
     }
 }
